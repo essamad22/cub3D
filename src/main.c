@@ -6,65 +6,38 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:51:49 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/01/28 04:57:11 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/16 17:08:23 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3D.h"
+#include "includes/cub3d.h"
+#include "includes/parsing.h"
+#include "includes/3d.h"
+#include <math.h>
 
-
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	main(int ac, char **av)
 {
-	char	*dst;
+	int		size;
+	// char	*line;
+	t_par	*par;
+	t_col	*col;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 700, 480, "Hello world!");
-	img.img = mlx_new_image(mlx, 700, 480);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-    while (i < 192)
-    {
-        j = 0;
-        while (j < 108)
-        {
-            my_mlx_pixel_put(&img, i, j, 0x00FFFFff);
-            j++;
-        }
-        i++;
-    }
-    while (i < 700)
-    {
-        j = 0;
-        while (j < 480)
-        {
-            my_mlx_pixel_put(&img, i, j, 0x0000ff);
-            j++;
-        }
-        i++;
-    }
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	par = NULL;
+	if (ac != 2 || ft_strcmp(av[1], ".cub"))
+		error("Error\nWrong number of arguments", par);
+	col = malloc(sizeof(t_col));
+	col->ptr = NULL;
+	col->next = NULL;
+	par = malloc(sizeof(t_par));
+	par->col = &col;
+	par->player = malloc(sizeof(t_player));
+	lst_add(par->col, lst_new(par->player, par->col));
+	intialize_par(par);
+	size = get_file_size(av[1], par);
+	read_file(av[1], par, size);
+	if (final_check(par))
+		error("Error\nInvalid map", par);
+    mlx(par->map, par);
+	free(par);
+	return (0);
 }

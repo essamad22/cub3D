@@ -6,7 +6,7 @@
 #    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/01/24 11:39:00 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/02/05 12:04:12 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,18 @@ AUTHOR			=	aakhtab
 
 CC			=	cc
 
-SRCS			=	src/main.c #src/parsing_part/
-				#src/raycasting_part/
+SRCS			=	src/main.c \
+					\
+					src/parsing_part/pars.c	src/parsing_part/checker_color.c  src/parsing_part/checker_map.c	 	\
+					src/parsing_part/checker_tex.c  src/parsing_part/ft_split_pars.c  src/parsing_part/getter.c 	\
+					src/parsing_part/grabge.c  src/parsing_part/read_file.c  src/parsing_part/utils_1.c  			\
+					src/parsing_part/utils_2.c  src/parsing_part/utils_3.c 											\
+					\
+					src/raycasting_part/mlx.c src/raycasting_part/move.c src/raycasting_part/utiles.c	\
 					
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g3
-#-g -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux #-fsanitize=address -g3
 
 NAME			=	cub3D
 
@@ -58,7 +63,7 @@ $(LIBFT)	:
 
 ##---- need to modier----------
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 ##-----------------------------
 
 header:
