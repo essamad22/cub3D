@@ -6,7 +6,7 @@
 /*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/16 17:36:17 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/17 18:30:00 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	loop(char **map, void *mlx, void *win, t_par *par)
 			if (map[y][x] == '1')
 				draw_square(mlx, win, x, y, 0x00A000D7);
 			else
-				draw_square(mlx, win, x, y, 0x00000000);
+				draw_square(mlx, win, x, y, 0x00FFFFFF);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 00:29:58 by afennoun          #+#    #+#             */
-/*   Updated: 2024/01/28 06:50:03 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:20:25 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	move_forwad(t_par *par, t_player *player, int key)
 {
-    printf("player->posX: %f\n", player->posX);
-    printf("player->posY: %f\n", player->posY);
-    printf("player->dirX: %f\n", player->dirX);
-    printf("player->dirY: %f\n", player->dirY);
+    // printf("player->posX: %f\n", player->posX);
+    // printf("player->posY: %f\n", player->posY);
+    // printf("player->dirX: %f\n", player->dirX);
+    // printf("player->dirY: %f\n", player->dirY);
 	if (key == 119 || key == ARROW_UP_L || key == 1493)
 	{
 		if (par->map[(int)roundf((player->posY + player->dirY * mov_speed)
@@ -37,10 +37,10 @@ void	move_forwad(t_par *par, t_player *player, int key)
 
 void	move_backward(t_par *par, t_player *player, int key)
 {
-    printf("player->posX: %f\n", player->posX);
-    printf("player->posY: %f\n", player->posY);
-    printf("player->dirX: %f\n", player->dirX);
-    printf("player->dirY: %f\n", player->dirY);
+    // printf("player->posX: %f\n", player->posX);
+    // printf("player->posY: %f\n", player->posY);
+    // printf("player->dirX: %f\n", player->dirX);
+    // printf("player->dirY: %f\n", player->dirY);
 	if (key == 115 || key == ARROW_DOWN_L || key == 1491)
 	{
 		if (par->map[(int)roundf((player->posY - player->dirY * mov_speed)
@@ -60,10 +60,10 @@ void	move_backward(t_par *par, t_player *player, int key)
 
 void	move_left(t_par *par, t_player *player, int key)
 {
-    printf("player->posX: %f\n", player->posX);
-    printf("player->posY: %f\n", player->posY);
-    printf("player->dirX: %f\n", player->dirX);
-    printf("player->dirY: %f\n", player->dirY);
+    // printf("player->posX: %f\n", player->posX);
+    // printf("player->posY: %f\n", player->posY);
+    // printf("player->dirX: %f\n", player->dirX);
+    // printf("player->dirY: %f\n", player->dirY);
 	if (key == 97 || key == ARROW_LEFT_L || key == 1492)
 	{
 		if (par->map[(int)roundf((player->posY - player->dirX * mov_speed)
@@ -83,10 +83,10 @@ void	move_left(t_par *par, t_player *player, int key)
 
 void	move_right(t_par *par, t_player *player, int key)
 {
-    printf("player->posX: %f\n", player->posX);
-    printf("player->posY: %f\n", player->posY);
-    printf("player->dirX: %f\n", player->dirX);
-    printf("player->dirY: %f\n", player->dirY);
+    // printf("player->posX: %f\n", player->posX);
+    // printf("player->posY: %f\n", player->posY);
+    // printf("player->dirX: %f\n", player->dirX);
+    // printf("player->dirY: %f\n", player->dirY);
 	if (key == 100 || key == ARROW_RIGHT_L || key == 1514)
 	{
 		if (par->map[(int)roundf((player->posY + player->dirX * mov_speed)
@@ -103,3 +103,4 @@ void	move_right(t_par *par, t_player *player, int key)
 		printf("right\n");
 	}
 }
+
