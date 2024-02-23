@@ -6,15 +6,15 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/09 12:17:00 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/23 05:31:13 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../../mlx_linux/mlx.h"
 # include "../../lib/libft.h"
+# include "../../mlx_linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
 // -----------------PARSING-----------------
@@ -34,7 +34,21 @@
 # define S_KEY 115
 # define D_KEY 100
 
+// -----------------MACROS-----------------
+# define TILE_SIZE 32
+# define FOV 60 
+# define PI 3.141593
+# define WIDTH 320
+# define HEIGHT 200
+# define NUM_RAYS WIDTH
+
+
+
 // ---utils-func---
 void  size_of_map(char **map, int *x, int *y);
+void stroke(void *mlx, void *win, t_par *par);
 void  draw_square(void *mlx, void *win, int x, int y, unsigned int color);
+void render(t_par *par);
+int update(t_par *par);
+int update_player(t_par *par, t_player *player);
 #endif

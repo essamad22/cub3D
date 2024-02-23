@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:53:47 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/23 05:21:38 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 // # include "../3d/minilibx-linux/mlx.h"
-// # include "../3d/3d.h"
+// # include "3d.h"
+
+typedef struct s_data
+{
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}               t_data;
 
 typedef struct s_col
 {
@@ -27,20 +36,33 @@ typedef struct s_col
 	void			*ptr;
 }					t_col;
 
+typedef struct s_evt
+{
+    int move;
+    int rot_dir;
+}               t_evt;
+
 typedef	struct	s_player
 {
 	float	posX;
 	float	posY;
 	double	dirX;
 	double	dirY;
-	float	planX;
-	float	planY;
-	float	tmp_driX;
-	float	tmp_driY;
+    float   rotAngle;
+    float   walkDir;
+    float   turnDir;
+	// float	planX;
+	// float	planY;
+	// float	tmp_driX;
+	// float	tmp_driY;
 }	t_player;
 
 typedef struct s_par
 {
+    float mov_step;
+    t_evt *evt;
+    int             width;
+    int             height;
 	t_col			**col;
 	char			**map;
 	char			**file;
@@ -59,6 +81,7 @@ typedef struct s_par
 	int				F_CLR[3];
 	void 			*mlx;
 	void 			*win;
+    t_data          img;
 }					t_par;
 
 int                 final_check(t_par *par);

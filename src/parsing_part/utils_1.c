@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:04:40 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:39:42 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/23 05:22:34 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ void	ft_init_player(t_player *player)
 	player->posY = 0.0;
 	player->dirX = 0;
 	player->dirY = 0;
-	player->planX = 0;
-	player->planY = 0.66;
+	// player->planX = 0;
+	// player->planY = 0.66;
+    player->rotAngle = (3 * M_PI) / 2;
+    player->walkDir = 0;
+    player->turnDir = 0;
 }
 
 void	intialize_par(t_par *par)
@@ -62,6 +65,7 @@ void	intialize_par(t_par *par)
 	par->color_f = NULL;
 	par->color_c = NULL;
 	par->map = NULL;
+    par->mov_step = 0;
 	i = 0;
 	ft_init_player(par->player);
 	while (i < 6)

@@ -6,11 +6,12 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:09:43 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:56:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/22 03:48:10 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "../includes/parsing.h"
 
 int	ft_isdigit(int c)
 {
