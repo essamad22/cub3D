@@ -6,7 +6,7 @@
 #    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/02/21 07:27:22 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/02/26 08:16:32 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,12 @@ SRCS			=	src/main.c \
 					src/parsing_part/utils_2.c  src/parsing_part/utils_3.c 											\
 					\
 					src/raycasting_part/mlx.c src/raycasting_part/move.c src/raycasting_part/utiles.c	\
-					src/raycasting_part/draw.c	\
+					src/raycasting_part/draw.c src/raycasting_part/intersection.c src/raycasting_part/render.c	\
+					src/raycasting_part/intersec_utils.c
 					
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g
+CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=leak -g
 
 NAME			=	cub3D
 

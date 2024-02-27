@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:08:21 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/22 12:19:28 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/26 09:02:47 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 #include <string.h>
 #include <unistd.h>
 
-#define rot_speed 4 * (PI / 180)
-#define mov_speed 5
+#define rot_speed 1 * (PI / 180)
+#define mov_speed 1.5
 #define rot_angle PI / 2
+#define RAY_ANGLE PI / 180
 
 // typedef struct s_data
 // {
@@ -34,6 +35,12 @@
 //     int   line_length;
 //     int   endian;
 // } t_data;
+typedef struct s_ray_ut
+{
+    double tan_angle;
+    double ray_down;
+    double ray_right;
+} t_ray_ut;
 
 typedef struct s_ray
 {
@@ -71,7 +78,7 @@ void ft_vectorize_dir(char dir, t_player *player);
 void ft_rotate_player(t_par *par, int key);
 void ft_rotate_with_dir(t_par *par, float rot_dir);
 
-void loop(char **map, void *mlx, void *win, t_par *par);
+// void loop(char **map, void *mlx, void *win, t_par *par);
 void move_forwad(t_par *par, t_player *player, int key);
 void move_backward(t_par *par, t_player *player, int key);
 void move_left(t_par *par, t_player *player, int key);

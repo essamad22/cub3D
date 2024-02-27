@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/23 05:31:13 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/26 09:27:26 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,32 @@
 
 // -----------------MACROS-----------------
 # define TILE_SIZE 32
-# define FOV 60 
+# define FOV 1.0472 
 # define PI 3.141593
-# define WIDTH 320
-# define HEIGHT 200
+# define WIDTH 1100
+# define HEIGHT 1000
+# define wallsatrip 2
 # define NUM_RAYS WIDTH
 
 
 
 // ---utils-func---
 void  size_of_map(char **map, int *x, int *y);
-void stroke(void *mlx, void *win, t_par *par);
-void  draw_square(void *mlx, void *win, int x, int y, unsigned int color);
+void  loop(t_data *img, t_par *par);
+void stroke(t_data *img, t_par *par);
+void  draw_square(t_data *img, int x, int y, unsigned int color);
 void render(t_par *par);
 int update(t_par *par);
-int update_player(t_par *par, t_player *player);
+int update_player(t_par *par);
+t_ray *get_ray(t_par *par, double fov, double num_rays);
+t_ray h_intersec(t_player player, double angle, t_par par);
+t_ray v_intersec(t_player player, double angle, t_par par);
+t_ray get_best_ray(t_player player, t_ray h_ray, t_ray v_ray);
+int check_h_angle(double angle);
+int check_v_angle(double angle);
+double norm_angle(double angle);
+int is_wall(char c);
+int check_wall(float x, float y, char **map);
+int check_intersec(float p_a[2], float x_step, float y_step, t_par par);
+t_ray set_ray(float x, float y, double angle, float distance);
 #endif

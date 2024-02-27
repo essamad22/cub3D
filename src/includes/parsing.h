@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/23 05:21:38 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/26 08:48:21 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ typedef struct s_data
     int     endian;
 }               t_data;
 
+typedef struct s_draw
+{
+    int x;
+    int y;
+    int wall_height;
+    int width;
+    int height;
+}               t_draw;
+
+typedef struct s_mlx
+{
+    void    *mlx_p;
+    void    *win_p;
+    t_data  data;
+    t_draw  wall;
+}               t_mlx;
+
 typedef struct s_col
 {
 	struct s_col	*next;
@@ -51,6 +68,7 @@ typedef	struct	s_player
     float   rotAngle;
     float   walkDir;
     float   turnDir;
+    float   side_walk;
 	// float	planX;
 	// float	planY;
 	// float	tmp_driX;
@@ -59,6 +77,7 @@ typedef	struct	s_player
 
 typedef struct s_par
 {
+    t_mlx           *mlx;
     float mov_step;
     t_evt *evt;
     int             width;
@@ -79,11 +98,9 @@ typedef struct s_par
 	unsigned int	color_C;
 	int				C_CLR[3];
 	int				F_CLR[3];
-	void 			*mlx;
-	void 			*win;
-    t_data          img;
 }					t_par;
 
+void                my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int                 final_check(t_par *par);
 void				free_garbage(t_col **col);
 void				error(char *str , t_par *par);
