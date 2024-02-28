@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
+#    By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/02/26 08:16:32 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/02/28 15:03:38 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,11 @@ SRCS			=	src/main.c \
 					\
 					src/raycasting_part/mlx.c src/raycasting_part/move.c src/raycasting_part/utiles.c	\
 					src/raycasting_part/draw.c src/raycasting_part/intersection.c src/raycasting_part/render.c	\
-					src/raycasting_part/intersec_utils.c
+					src/raycasting_part/intersec_utils.c src/raycasting_part/tex.c
 					
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=leak -g
+CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g
 
 NAME			=	cub3D
 

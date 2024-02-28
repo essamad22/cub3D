@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/26 09:27:26 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 20:46:24 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@
 # define D_KEY 100
 
 // -----------------MACROS-----------------
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 # define FOV 1.0472 
 # define PI 3.141593
-# define WIDTH 1100
-# define HEIGHT 1000
-# define wallsatrip 2
+# define WIDTH 1200
+# define HEIGHT 920
+# define wallsatrip 1
 # define NUM_RAYS WIDTH
 
 
@@ -64,4 +64,7 @@ int is_wall(char c);
 int check_wall(float x, float y, char **map);
 int check_intersec(float p_a[2], float x_step, float y_step, t_par par);
 t_ray set_ray(float x, float y, double angle, float distance);
+void init_tex(t_par *par);
+void free_tex(t_tex *tex);
+t_tex *get_tex(char direction, t_par *par);
 #endif

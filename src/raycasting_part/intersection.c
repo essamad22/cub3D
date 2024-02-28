@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:36:18 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/27 01:14:03 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:56:24 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ t_ray	get_best_ray(t_player p, t_ray h_r, t_ray v_r)
 		v_r.distance = v_dis;
 		v_r.id = 'v';
 		if (v_r.ray_angle <= PI / 2.0 || v_r.ray_angle >= 3.0 * PI / 2.0)
-			v_r.dir = 'E';
-		else
 			v_r.dir = 'W';
+		else
+			v_r.dir = 'E';
 		return (v_r);
 	}
 	h_r.id = 'h';

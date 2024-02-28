@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/26 08:48:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 14:34:00 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-// # include "./get_next_line/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-// # include "../3d/minilibx-linux/mlx.h"
-// # include "3d.h"
 
 typedef struct s_data
 {
@@ -75,11 +72,21 @@ typedef	struct	s_player
 	// float	tmp_driY;
 }	t_player;
 
+typedef struct s_tex
+{
+    char    *path;
+    t_data  *img;
+    int     width;
+    int     height;
+    char    *id;
+}               t_tex;
+
 typedef struct s_par
 {
     t_mlx           *mlx;
-    float mov_step;
-    t_evt *evt;
+    float           mov_step;
+    t_tex           *tex;
+    t_evt           *evt;
     int             width;
     int             height;
 	t_col			**col;

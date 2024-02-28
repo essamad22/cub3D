@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:51:49 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/16 17:08:23 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 20:56:44 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 int	main(int ac, char **av)
 {
 	int		size;
-	// char	*line;
 	t_par	*par;
 	t_col	*col;
 
@@ -38,6 +37,7 @@ int	main(int ac, char **av)
 	if (final_check(par))
 		error("Error\nInvalid map", par);
     mlx(par->map, par);
+    free_tex(par->tex);
 	free(par);
 	return (0);
 }

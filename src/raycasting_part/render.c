@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/26 10:52:59 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 20:58:54 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+unsigned int get_pixel(t_data *img, int x, int y, t_tex *tex)
+{
+    char *dst;
+
+    if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
+        return (0);
+    dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+    return (*(unsigned int*)dst);
+}
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -24,16 +33,24 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void draw_wall(t_draw wall, t_data *img, t_ray ray, unsigned int color)
+void draw_wall(t_draw wall, t_data *img, t_ray ray, t_par *par)
 {
+    t_tex *tex;
     int i;
+    int x_offset;
+    int y_offset;
+    float distortion;
 
     (void)ray;
     (void)img;
     i = wall.y;
+    tex = get_tex(ray.dir, par);
+    x_offset = (int)(ray.x_hit + ray.y_hit) % TILE_SIZE;
     while (i <= wall.wall_height + wall.y)
     {
-        my_mlx_pixel_put(img, wall.x, i, color);
+        distortion = i - (HEIGHT - wall.height) / 2.0;
+        y_offset = (int)(distortion * (float)tex->height / wall.height);
+        my_mlx_pixel_put(img, wall.x, i, get_pixel(tex->img, x_offset, y_offset, tex));
         i++;
     }
 }
@@ -106,20 +123,18 @@ void render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
     float wall_height;
     
     (void)img;
-    par->color_C = 0x0000AAFF;
-    par->color_F = 0x00000000;
-    unsigned int color;
-    color = 0x460170;
     distance_to_vp = ((WIDTH / 2.0) / tan(FOV / 2.0)) * TILE_SIZE;
     i = 0;
     while (i < NUM_RAYS)
     {
         wall_height = (distance_to_vp / rays[i].distance);
+        // printf("rays[0].ray = %f\n", rays[0].ray_angle);
+        // printf("angle = %f\n", angle);
         wall_height /= cos(angle - rays[i].ray_angle);
         par->mlx->wall = fill_wall(i, (HEIGHT - wall_height) / 2, wall_height, par->mlx->wall);
-        draw_wall(par->mlx->wall, &par->mlx->data, rays[i], color);
-        draw_ceiling(img, i, (HEIGHT / 2) - (wall_height / 2), 0xAAFFFF);
-        draw_floor(img, i, (HEIGHT / 2) + (wall_height / 2), 0x707070);
+        draw_wall(par->mlx->wall, &par->mlx->data, rays[i], par);
+        draw_ceiling(img, i, (HEIGHT / 2) - (wall_height / 2), par->color_C);
+        draw_floor(img, i, (HEIGHT / 2) + (wall_height / 2), par->color_F);
         i++;
     }
 
@@ -131,6 +146,6 @@ void render(t_par *par)
     rays = get_ray(par, FOV, (double)NUM_RAYS);
     render_3d(par, rays, &par->mlx->data, par->player->rotAngle);
     free(rays);
-    mlx_put_image_to_window(par->mlx->mlx_p, par->mlx->win_p, par->mlx->data.img, 0, 0);
     loop(&par->mlx->data, par);
+    mlx_put_image_to_window(par->mlx->mlx_p, par->mlx->win_p, par->mlx->data.img, 0, 0);
 }

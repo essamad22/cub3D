@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/27 01:13:17 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:01:13 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	loop(t_data *img, t_par *par)
 	int	y;
 
 	y = 0;
-	while (par->map[y])
+	while (y < par->height)
 	{
-		x = 0;
-		while (par->map[y][x])
+        x = 0;
+		while (x < par->width)
 		{
 			if (par->map[y][x] == '1')
 				draw_square(img, x, y, 0x000000);
@@ -60,10 +60,12 @@ void	loop(t_data *img, t_par *par)
 			x++;
 		}
 		y++;
-		ft_player(par->player->posX / 2, par->player->posY / 2, img);
-        stroke(img, par);
         // render(par);
 	}
+    if (par->player->posX / 4 < par->width * 16 && par->player->posY / 4 < par->height * 16)
+        ft_player(((par->player->posX) / 4), (par->player->posY / 4), img);
+    // ft_player(((par->player->posX) / 2), (par->player->posY / 2), img);
+    stroke(img, par);
 }
 
 int update(t_par *par)
@@ -92,6 +94,7 @@ int close_win(t_par *par)
 {
     mlx_destroy_image(par->mlx->mlx_p, par->mlx->data.img);
     mlx_destroy_window(par->mlx->mlx_p, par->mlx->win_p);
+    free_tex(par->tex);
     free(par);
     exit(0);
     return (0);
@@ -139,6 +142,7 @@ int	mlx(char **map, void *par1)
     par->mlx->data.img = mlx_new_image(par->mlx->mlx_p, WIDTH, HEIGHT);
     par->mlx->data.addr = mlx_get_data_addr(par->mlx->data.img, &par->mlx->data.bits_per_pixel, &par->mlx->data.line_length,
             &par->mlx->data.endian);
+    init_tex(par);
     render(par);
     mlx_hook(par->mlx->win_p, 2, 1L<<0, key_down, par);
     mlx_hook(par->mlx->win_p, 3, 1L << 1, key_up, par);

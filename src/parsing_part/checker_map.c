@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:58:25 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:38:45 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 20:50:53 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int	find_player(t_par *par)
 			if (par->map[i][j] == 'N' || par->map[i][j] == 'S'
 				|| par->map[i][j] == 'E' || par->map[i][j] == 'W')
 			{
-				par->player->posX = j * 32;
-				par->player->posY = i * 32;
+				par->player->posX = j * 64 + 32;
+				par->player->posY = i * 64 + 32;
 				ft_vectorize_dir(par->map[i][j], par->player);
 				cc++;
 				par->map[i][j] = '0';
