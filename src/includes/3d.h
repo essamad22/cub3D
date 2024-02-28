@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:08:21 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 21:02:27 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:25:28 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <unistd.h>
 
 #define rot_speed 1.1 * (PI / 180)
-#define mov_speed 1.1
+#define mov_speed 2
 #define rot_angle PI / 2
 #define RAY_ANGLE PI / 180
 

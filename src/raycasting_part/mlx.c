@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 21:01:13 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:52:43 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,14 @@ int update(t_par *par)
 
 int close_win(t_par *par)
 {
+    int i = 0;
     mlx_destroy_image(par->mlx->mlx_p, par->mlx->data.img);
+    // mlx_destroy_image(par->mlx->mlx_p, par->tex->img->img);
+    while (i < 4)
+    {
+        mlx_destroy_image(par->mlx->mlx_p, par->tex[i].img->img);
+        i++;
+    }
     mlx_destroy_window(par->mlx->mlx_p, par->mlx->win_p);
     free_tex(par->tex);
     free(par);
