@@ -6,40 +6,40 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 17:06:09 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 19:36:44 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	loop(t_data *img, t_par *par)
-{
-	int	x;
-    int	y;
-    int posY;
-    int posX;
-
-	y = -1;
-    posY = par->player->posY - 192;
-    posX = par->player->posX - 192;
-	while (++y < 256)
-	{
-        x = -1;
-		while (++x < 256)
-		{
-            if ((posY + y + 128) > par->height * 64 
-                    || (posX + x + 128) > par->width * 64 
-                    || (posY + y) < 0 || (posX + x) < 0)
-                my_mlx_pixel_put(img, x, y, 0x000000);
-            else if (par->map[(y + posY + 64) / 64][(x + posX + 64) / 64] == '1')
-				my_mlx_pixel_put(img, x, y, 0x000000);
-			else
-				my_mlx_pixel_put(img, x, y, 0xfafafa);
-		}
-	}
-    ft_player(128, 128, img);
-}
-
+// void	loop(t_data *img, t_par *par)
+// {
+// 	int	x;
+//     int	y;
+//     int posY;
+//     int posX;
+//
+// 	y = -1;
+//     posY = par->player->posY - 192;
+//     posX = par->player->posX - 192;
+// 	while (++y < 256)
+// 	{
+//         x = -1;
+// 		while (++x < 256)
+// 		{
+//             if ((posY + y + 128) > par->height * 64 
+//                     || (posX + x + 128) > par->width * 64 
+//                     || (posY + y) < 0 || (posX + x) < 0)
+//                 my_mlx_pixel_put(img, x, y, 0x000000);
+//             else if (par->map[(y + posY + 64) / 64][(x + posX + 64) / 64] == '1')
+// 				my_mlx_pixel_put(img, x, y, 0x000000);
+// 			else
+// 				my_mlx_pixel_put(img, x, y, 0xfafafa);
+// 		}
+// 	}
+//     ft_player(128, 128, img);
+// }
+//
 int close_win(t_par *par)
 {
     int i = 0;
@@ -63,10 +63,14 @@ int key_up(int key, t_par *par)
         par->player->walkDir = 0;
     if (key == 1491 || key == 115 || key == ARROW_DOWN_L)
         par->player->walkDir = 0;
-    if (key == 1492 || key == 97 || key == ARROW_LEFT_L)
+    if (key == ARROW_LEFT_L)
         par->player->turnDir = 0;
-    if (key == 1514 || key == 100 || key == ARROW_RIGHT_L)
+    if (key == ARROW_RIGHT_L)
         par->player->turnDir = 0;
+    if (key == 97 || key == 1492)
+        par->player->side_walk = 0;
+    if (key == 100 || key == 1514)
+        par->player->side_walk = 0;
     return (0);
 }
 
@@ -76,14 +80,20 @@ int	key_down(int key, t_par *par)
     {
         close_win(par);
     }
-	if (key == 97 || key == ARROW_LEFT_L || key == 1492)
+	if (key == ARROW_LEFT_L)
 		par->player->turnDir = -1;
-	if (key == 100 || key == ARROW_RIGHT_L || key == 1514)
+	if (key == ARROW_RIGHT_L)
         par->player->turnDir = 1;
 	if (key == 119 || key == ARROW_UP_L || key == 1493)
 		par->player->walkDir = 1;
 	if (key == 115 || key == ARROW_DOWN_L || key == 1491)
 		par->player->walkDir = -1;
+    if (key == 97 || key == 1492)
+        par->player->side_walk = -1;
+    if (key == 100 || key == 1514)
+    {
+        par->player->side_walk = 1;
+    }
 	return (0);
 }
 

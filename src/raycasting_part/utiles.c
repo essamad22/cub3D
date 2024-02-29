@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:00:48 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 16:43:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 19:17:53 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,27 @@ void size_of_map(char **map, int *x, int *y)
     //check size of map for the window size
     int i;
     int j;
+    int a;
 
     i = 0;
     j = 0;
+    *x = 0;
+    a = 0;
     // printf("size of map\n");
     while (map[i])
         i++;
-    while (map[0][j])
-        j++;
-    *x = j;
+    while (a < i)
+    {
+        j = 0;
+        while (map[a][j])
+            j++;
+        if (j > *x)
+            *x = j;
+        a++;
+    }
+    printf("size of map %d %d\n", *x, i);
+    // while (map[0][j])
+    //     j++;
     *y = i;
 }
 
@@ -38,7 +50,14 @@ int check_wall(float x, float y, char **map)
     int width;
 	grid_x = x / TILE_SIZE;
 	grid_y = y / TILE_SIZE;
-    size_of_map(map, &width, &height);
+    height = 0;
+    width = 0;
+    while (map[height])
+        height++;
+    while (map[(int)grid_y][width])
+    {
+        width++;
+    }
 	if (grid_y >= (height) || grid_y < 0
 		|| grid_x >= (width) || grid_x < 0)
 		return (1);

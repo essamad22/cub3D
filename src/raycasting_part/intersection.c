@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:36:18 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/28 18:56:24 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 19:09:44 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_ray h_intersec(t_player p, double angle, t_par par)
         x_step *= -1;
     if (!ray_utils.ray_down)
         p_a[1] -= 1.0;
-    while (p_a[0] >= 0 && p_a[0] < par.width * TILE_SIZE
-        && p_a[1] >= 0 && p_a[1] < par.height * TILE_SIZE)
+    while (p_a[0] >= 0 && p_a[0] <= WIDTH
+        && p_a[1] >= 0 && p_a[1] <= HEIGHT)
         if (check_intersec(p_a, x_step, y_step, par))
             break;
     return (set_ray(p_a[0], p_a[1], angle, 0));
