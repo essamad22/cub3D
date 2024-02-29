@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+         #
+#    By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/02/29 07:09:57 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/02/29 22:31:01 by afennoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ CC			=	cc
 
 SRCS			=	src/main.c \
 					\
-					src/parsing_part/pars.c	src/parsing_part/checker_color.c  src/parsing_part/checker_map.c	 	\
-					src/parsing_part/checker_tex.c  src/parsing_part/ft_split_pars.c  src/parsing_part/getter.c 	\
+					src/parsing_part/pars.c	src/parsing_part/checker_color1.c  src/parsing_part/checker_map1.c	 	\
+					src/parsing_part/checker_tex.c  src/parsing_part/ft_split_pars.c  src/parsing_part/getter1.c 	\
 					src/parsing_part/grabge.c  src/parsing_part/read_file.c  src/parsing_part/utils_1.c  			\
-					src/parsing_part/utils_2.c  src/parsing_part/utils_3.c 											\
+					src/parsing_part/utils_2.c  src/parsing_part/utils_3.c 	src/parsing_part/checker_map2.c			\
+					src/parsing_part/checker_map3.c src/parsing_part/getter2.c src/parsing_part/checker_color2.c 	\
 					\
 					src/raycasting_part/mlx.c src/raycasting_part/move.c src/raycasting_part/utiles.c	\
 					src/raycasting_part/draw.c src/raycasting_part/intersection.c src/raycasting_part/render.c	\

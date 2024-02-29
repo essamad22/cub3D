@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_tex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 06:13:22 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:38:52 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:04:44 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_texture(char *par)
 	}
 	return (0);
 }
+
 int	loop_2(t_par *par)
 {
 	if (check_texture(par->tex_n))

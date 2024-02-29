@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 14:34:00 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:30:04 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,28 @@ void				rgb(t_par *par, unsigned int *color , int *clr);
 // int 				ft_atoi(const char *str);
 int					is_empty(char *str);
 // int 				ft_strncmp(const char *s1, const char *s2, size_t n);
+int                 check_closed(t_par *par);
+int	                check_valid(t_par *par);
+void                ft_vectorize_ew(char dir, t_player *player);
+void                ft_vectorize_ns(char dir, t_player *player);
+void                ft_vectorize_dir(char dir, t_player *player);
+void                condition(t_par *par, int *i, int *j, int *cc);
+int                 check_white(char **map, int i, int j);
+int                 is_empty(char *map);
+void                remove_last_lines(char **map);
+void	            remove_first_lines(char **str);
+int                 check_arr(int *arr);
+int                 check_ordre(t_par *par);
+int                 loop_1(t_par *par);
+int                 get_texture_1(char *line, t_par *par);
+int                 get_texture_2(char *line, t_par *par);
+int                 get_color(char *line, t_par *par);
+int                 is_texter(char *line);
+int                 get_map(char **line, t_par *par, int *j, int i);
+int	                count_comma(char *par);
+int                 split_color(char *col, t_par *par);
+void                skip_space(char *str, int *i);
+int                 ft_strlen_space(char *str);
+
+
 #endif

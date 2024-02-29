@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:45:28 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:39:32 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 21:26:38 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	tex_without_space(t_par *par)
 
 int	final_check(t_par *par)
 {
-	int	size;
-
 	if (loop_1(par))
 		error("Error\nInvalid map0", par);
 	if (check_valid(par))
@@ -59,17 +57,5 @@ int	final_check(t_par *par)
 	tex_without_space(par);
 	if (find_player(par))
 		error("Error\n invalid player", par);
-	printf("WE %s\n", par->tex_w);
-	printf("NO %s\n", par->tex_n);
-	printf("SO %s\n", par->tex_s);
-	printf("EA %s\n", par->tex_e);
-	printf("F %d\n", par->color_F);
-	printf("C %d\n", par->color_C);
-	size = 0;
-	while (par->map[size])
-	{
-		printf("%s\n", par->map[size]);
-		size++;
-	}
 	return (0);
 }

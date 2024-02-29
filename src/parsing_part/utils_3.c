@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:09:43 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/22 03:48:10 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 21:38:06 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,19 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
+
 unsigned int	to_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
+
 void	rgb(t_par *par, unsigned int *color, int *clr)
 {
 	int	i;
 	int	j;
-	// int	k[3];
-	// int	x;
 
 	i = 0;
 	j = 0;
-	// x = 0;
 	while (par->splited[i])
 	{
 		clr[j] = ft_atoi(par->splited[i]);

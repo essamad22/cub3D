@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/3d.h"
 #include "includes/cub3d.h"
 #include "includes/parsing.h"
-#include "includes/3d.h"
 #include <math.h>
 
 int	main(int ac, char **av)
@@ -36,8 +36,8 @@ int	main(int ac, char **av)
 	read_file(av[1], par, size);
 	if (final_check(par))
 		error("Error\nInvalid map", par);
-    mlx(par->map, par);
-    free_tex(par->tex);
+	mlx(par->map, par);
+	free_tex(par->tex);
 	free(par);
 	return (0);
 }

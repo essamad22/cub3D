@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:49:54 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:54:23 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:18:08 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	open_file(char *file, t_par *par)
 		error("Error\nFile not found", par);
 	return (fd);
 }
+
 int	count_longest_line(char **file)
 {
 	int	i;
@@ -42,14 +43,13 @@ int	count_longest_line(char **file)
 	}
 	return (max);
 }
+
 int	get_file_size(char *file, t_par *par)
 {
 	int		fd;
 	int		size;
 	char	*line;
-	// int		i;
 
-	// i = 0;
 	size = 0;
 	fd = open_file(file, par);
 	line = get_next_line(fd);

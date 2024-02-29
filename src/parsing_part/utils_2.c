@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:09:00 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:55:29 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:20:00 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,22 @@ char	*get_index(char *line)
 		i++;
 	return (line + i);
 }
+
+int	condition_cmp(char *cmp, char *par, int *i, int *j)
+{
+	if (cmp[*j] == '\0')
+	{
+		if (par[*i] == ' ' || par[*i] == '\0')
+		{
+			while (par[*i] == ' ')
+				(*i)++;
+			if (par[*i] == '\0')
+				return (0);
+		}
+	}
+	return (1);
+}
+
 int	ft_strcmp(char *par, char *cmp)
 {
 	int	i;
@@ -106,16 +122,8 @@ int	ft_strcmp(char *par, char *cmp)
 			j++;
 			i++;
 		}
-		if (cmp[j] == '\0')
-		{
-			if (par[i] == ' ' || par[i] == '\0')
-			{
-				while (par[i] == ' ')
-					i++;
-				if (par[i] == '\0')
-					return (0);
-			}
-		}
+		if (!condition_cmp(cmp, par, &i, &j))
+			return (0);
 	}
 	return (1);
 }

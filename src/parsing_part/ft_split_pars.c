@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_pars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 01:26:54 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:39:08 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:18:26 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ static int	skipc(const char *s, char c)
 	return (i);
 }
 
+void	*split_condition(char **ss, int *j)
+{
+	if (*(ss + *j) == NULL)
+		return (freealloc(ss, *j));
+	(*j)++;
+	return (NULL);
+}
+
 char	**ft_split_pars(char *s, char c, t_par *par)
 {
 	char	**ss;
@@ -71,9 +79,7 @@ char	**ft_split_pars(char *s, char c, t_par *par)
 			k = skipc(s + i, c);
 			*(ss + j) = ft_substr_pars(s, i, k);
 			lst_add(par->col, lst_new(*(ss + j), par->col));
-			if (*(ss + j) == NULL)
-				return (freealloc(ss, j));
-			j++;
+			split_condition(ss, &j);
 			i += k;
 		}
 		else

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getter.c                                           :+:      :+:    :+:   */
+/*   getter1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:51:34 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:41:44 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:24:44 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,59 +115,4 @@ int	get_map(char **line, t_par *par, int *j, int i)
 	else
 		return (0);
 	return (1);
-}
-
-int	check_arr(int *arr)
-{
-	int	i;
-	// int	j;
-
-	i = 0;
-	// j = 0;
-	while (i < 6)
-	{
-		if (arr[i] > 1)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_ordre(t_par *par)
-{
-	int	i;
-	int	cc;
-
-	i = 0;
-	cc = 0;
-	while (par->file[i] && (is_empty(par->file[i]) || is_texter(par->file[i])))
-	{
-		if (is_texter(par->file[i]))
-			cc++;
-		i++;
-	}
-	if (cc == 6)
-		return (0);
-	return (1);
-}
-int	loop_1(t_par *par)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (check_ordre(par))
-		return (1);
-	while (par->file[i])
-	{
-		get_map(par->file, par, &j, i);
-		get_texture_1(par->file[i], par);
-		get_color(par->file[i], par);
-		i++;
-	}
-	par->map[j] = NULL;
-	if (check_arr(par->arr))
-		return (1);
-	return (0);
 }

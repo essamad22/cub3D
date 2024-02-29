@@ -46,10 +46,10 @@ void	ft_init_player(t_player *player)
 	player->posY = 0.0;
 	player->dirX = 0;
 	player->dirY = 0;
-    player->rotAngle = M_PI / 2;
-    player->walkDir = 0;
-    player->turnDir = 0;
-    player->side_walk = 0;
+	player->rotAngle = M_PI / 2;
+	player->walkDir = 0;
+	player->turnDir = 0;
+	player->side_walk = 0;
 }
 
 void	intialize_par(t_par *par)
@@ -64,8 +64,8 @@ void	intialize_par(t_par *par)
 	par->color_f = NULL;
 	par->color_c = NULL;
 	par->map = NULL;
-    par->mlx = malloc(sizeof(t_mlx));
-    par->mov_step = 0;
+	par->mlx = malloc(sizeof(t_mlx));
+	par->mov_step = 0;
 	i = 0;
 	ft_init_player(par->player);
 	while (i < 6)
