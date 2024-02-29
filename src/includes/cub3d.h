@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/28 20:46:24 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:42:06 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define HEIGHT 920
 # define wallsatrip 1
 # define NUM_RAYS WIDTH
+// # define MINIMAP_SCALE_FACTOR 0.2
 
 
 
@@ -53,6 +54,7 @@ void  draw_square(t_data *img, int x, int y, unsigned int color);
 void render(t_par *par);
 int update(t_par *par);
 int update_player(t_par *par);
+void ft_player(int x, int y, t_data *img);
 t_ray *get_ray(t_par *par, double fov, double num_rays);
 t_ray h_intersec(t_player player, double angle, t_par par);
 t_ray v_intersec(t_player player, double angle, t_par par);
@@ -67,4 +69,9 @@ t_ray set_ray(float x, float y, double angle, float distance);
 void init_tex(t_par *par);
 void free_tex(t_tex *tex);
 t_tex *get_tex(char direction, t_par *par);
+void draw_ceiling(t_data *img, int x, int y, int color);
+void draw_wall(t_draw wall, t_data *img, t_ray ray, t_par *par);
+void draw_floor(t_data *img, int x, int y, int color);
+unsigned int get_pixel(t_data *img, int x, int y, t_tex *tex);
+
 #endif

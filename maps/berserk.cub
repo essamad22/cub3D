@@ -1,10 +1,10 @@
-SO ./assets/DIO.xpm
-WE ./assets/wall8.xpm
-NO ./assets/wall9.xpm
-EA ./assets/wall7.xpm
+EA ./assets/berserk.xpm
+WE ./assets/berserk_name.xpm
+NO ./assets/berserk.xpm
+SO ./assets/berserk.xpm
 
-F 100,60,150
-C 0,150,205
+F 60,43,41
+C 100,0,0
 
 1111111111111111111111111111
 100000000000000N000000000001

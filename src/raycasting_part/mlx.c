@@ -6,88 +6,38 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 21:52:43 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 17:06:09 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	ft_player(int x, int y, t_data *img)
-{
-    int i;
-    int j;
-    int des;
-
-    i = 2;
-    j = 0;
-    des = 1 - i;
-    while (i >= j)
-    {
-        my_mlx_pixel_put(img, (x) + i, (y) + j, 0x00000000);
-        my_mlx_pixel_put(img, (x) - i, (y) + j, 0x00000000);
-        my_mlx_pixel_put(img, (x) + i, (y) - j, 0x00000000);
-        my_mlx_pixel_put(img, (x) - i, (y) - j, 0x00000000);
-        my_mlx_pixel_put(img, (x) + j, (y) + i, 0x00000000);
-        my_mlx_pixel_put(img, (x ) - j, (y) + i, 0x00000000);
-        my_mlx_pixel_put(img, (x ) + j, (y) - i, 0x00000000);
-        my_mlx_pixel_put(img, (x ) - j, (y) - i, 0x00000000);
-        j++;
-        if (des <= 0)
-            des += 2 * j + 1;
-        else
-        {
-            i--;
-            des += 2 * (j - i) + 1;
-        }
-    }
-}
-
 void	loop(t_data *img, t_par *par)
 {
 	int	x;
-	int	y;
+    int	y;
+    int posY;
+    int posX;
 
-	y = 0;
-	while (y < par->height)
+	y = -1;
+    posY = par->player->posY - 192;
+    posX = par->player->posX - 192;
+	while (++y < 256)
 	{
-        x = 0;
-		while (x < par->width)
+        x = -1;
+		while (++x < 256)
 		{
-			if (par->map[y][x] == '1')
-				draw_square(img, x, y, 0x000000);
+            if ((posY + y + 128) > par->height * 64 
+                    || (posX + x + 128) > par->width * 64 
+                    || (posY + y) < 0 || (posX + x) < 0)
+                my_mlx_pixel_put(img, x, y, 0x000000);
+            else if (par->map[(y + posY + 64) / 64][(x + posX + 64) / 64] == '1')
+				my_mlx_pixel_put(img, x, y, 0x000000);
 			else
-				draw_square(img, x, y, 0xfafafa);
-			x++;
+				my_mlx_pixel_put(img, x, y, 0xfafafa);
 		}
-		y++;
-        // render(par);
 	}
-    if (par->player->posX / 4 < par->width * 16 && par->player->posY / 4 < par->height * 16)
-        ft_player(((par->player->posX) / 4), (par->player->posY / 4), img);
-    // ft_player(((par->player->posX) / 2), (par->player->posY / 2), img);
-    stroke(img, par);
-}
-
-int update(t_par *par)
-{
-    int c;
-
-    c = 0;
-    par->mov_step = par->player->walkDir * mov_speed;
-    par->player->rotAngle += par->player->turnDir * rot_speed;
-    par->player->dirX = cos(par->player->rotAngle) * par->mov_step;
-    par->player->dirY = sin(par->player->rotAngle) * par->mov_step;
-    if (par->player->walkDir || par->player->turnDir)
-    {
-        c += update_player(par);
-    }
-    if (par->player->turnDir || c)
-    {
-        par->player->rotAngle = norm_angle(par->player->rotAngle);
-        // loop(par->map, par->mlx->mlx_p, par->mlx->win_p, par);
-        render(par);
-    }
-    return (0);
+    ft_player(128, 128, img);
 }
 
 int close_win(t_par *par)

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:23:24 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/28 20:56:25 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 07:12:45 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void    free_tex(t_tex *tex)
     {
         free(tex[i].path);
         free(tex[i].id);
-        free(tex[i].img->img);
         free(tex[i].img);
         i++;
     }

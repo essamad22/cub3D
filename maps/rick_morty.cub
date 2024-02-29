@@ -1,10 +1,10 @@
-SO ./testxpm/wall2.xpm
-WE ./testxpm/wall8.xpm
-NO ./testxpm/wall9.xpm
-EA ./testxpm/wall7.xpm
+SO ./assets/rick_morty_theme.xpm
+WE ./assets/rick_morty.xpm
+EA ./assets/rick_morty2.xpm
+NO ./assets/rick_morty3.xpm
 
-F 116,102,59
-C 135,206,235
+C 88,120,0
+F 42,63,0
 
 1111111111111111111
 1001000011000000001

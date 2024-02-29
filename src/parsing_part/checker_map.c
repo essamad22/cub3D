@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:58:25 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 20:50:53 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:50:09 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,8 @@ int	find_player(t_par *par)
 	int	j;
 	int	cc;
 
-	// t_player	*player;
 	cc = 0;
 	i = 0;
-	// player = par->player;
 	if (par->map[i] == NULL)
 		error("Error\nInvalid map position", par);
 	while (par->map[i])
@@ -116,6 +114,7 @@ int	check_white(char **map, int i, int j)
 		return (1);
 	return (0);
 }
+
 int	is_empty(char *map)
 {
 	int	i;
@@ -142,7 +141,7 @@ void	remove_last_lines(char **map)
 		j = 0;
 		while (map[i])
 		{
-			map[i] = '\0';
+			map[i] = NULL;
 			j++;
 		}
 		i--;
@@ -163,7 +162,7 @@ void	remove_first_lines(char **str)
 		i++;
 		j++;
 	}
-	str[j] = '\0';
+	str[j] = NULL;
 }
 
 int	check_closed(t_par *par)

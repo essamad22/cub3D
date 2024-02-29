@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 00:29:58 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 20:47:22 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:09:51 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,24 @@ int update_player(t_par *par)
     return (c);
 }
 
+int update(t_par *par)
+{
+    int c;
+
+    c = 0;
+    par->mov_step = par->player->walkDir * mov_speed;
+    par->player->rotAngle += par->player->turnDir * rot_speed;
+    par->player->dirX = cos(par->player->rotAngle) * par->mov_step;
+    par->player->dirY = sin(par->player->rotAngle) * par->mov_step;
+    if (par->player->walkDir || par->player->turnDir)
+    {
+        c += update_player(par);
+    }
+    if (par->player->turnDir || c)
+    {
+        par->player->rotAngle = norm_angle(par->player->rotAngle);
+        // loop(par->map, par->mlx->mlx_p, par->mlx->win_p, par);
+        render(par);
+    }
+    return (0);
+}

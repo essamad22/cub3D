@@ -6,7 +6,7 @@
 #    By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/02/28 21:48:12 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/02/29 07:09:57 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ SRCS			=	src/main.c \
 					
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux 
-# -fsanitize=address -g
+CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g
 
 NAME			=	cub3D
 

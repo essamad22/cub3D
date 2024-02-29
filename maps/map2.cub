@@ -1,11 +1,14 @@
-SO ./testxpm/wall2.xpm
-WE ./testxpm/wall8.xpm
-NO ./testxpm/wall9.xpm
-EA ./testxpm/wall7.xpm
+SO ./assets/art.xpm
+WE ./assets/art.xpm
+NO ./assets/art.xpm
+EA ./assets/art.xpm
 
 F 116,102,59
 C 135,206,235
 
-111
-1N1
-111
+11111111111
+1N000000001
+10000111011
+10000000001
+10000100001
+11111111111
