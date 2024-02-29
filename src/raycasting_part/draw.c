@@ -6,14 +6,14 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 07:16:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 16:39:59 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 20:57:40 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include <math.h>
 
-void	ft_player(int x, int y, t_data *img)
+void ft_player(int x, int y, t_data *img)
 {
     int i;
     int j;
@@ -35,10 +35,10 @@ void	ft_player(int x, int y, t_data *img)
 void draw_wall(t_draw wall, t_data *img, t_ray ray, t_par *par)
 {
     t_tex *tex;
-    int i;
-    int x_offset;
-    int y_offset;
-    float distortion;
+    int    i;
+    int    x_offset;
+    int    y_offset;
+    float  distortion;
 
     (void)ray;
     (void)img;

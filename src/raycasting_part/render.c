@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 18:34:49 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 20:58:12 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 t_ray *get_ray(t_par *par, double fov, double num_rays)
 {
     t_ray *rays;
-    t_ray h_ray;
-    t_ray v_ray;
+    t_ray  h_ray;
+    t_ray  v_ray;
     double ray_angle;
-    int id;
+    int    id;
 
     rays = malloc(sizeof(t_ray) * num_rays);
     ray_angle = par->player->rotAngle - (fov / 2);
@@ -51,10 +51,10 @@ t_draw fill_wall(int x, int y, float wall_height, t_draw wall)
 
 void render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
 {
-    int i;
+    int   i;
     float distance_to_vp;
     float wall_height;
-    
+
     (void)img;
     distance_to_vp = ((WIDTH / 2.0) / tan(FOV / 2.0)) * TILE_SIZE;
     i = 0;
@@ -70,11 +70,10 @@ void render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
         draw_floor(img, i, (HEIGHT / 2) + (wall_height / 2), par->color_F);
         i++;
     }
-
 }
 void render(t_par *par)
 {
-    t_ray  *rays;
+    t_ray *rays;
 
     rays = get_ray(par, FOV, (double)NUM_RAYS);
     render_3d(par, rays, &par->mlx->data, par->player->rotAngle);
