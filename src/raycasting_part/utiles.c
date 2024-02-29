@@ -6,12 +6,50 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:00:48 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 20:58:23 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 00:10:15 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void free_map(char **map)
+{
+    int i;
+
+    i = 0;
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
+}
+char  **fill_map(char **map, int width, int height)
+{
+    int i;
+    int j;
+    char **tmp;
+
+    i = 0;
+    tmp = malloc(sizeof(char *) * (height + 1));
+    while (i < height)
+    {
+        tmp[i] = malloc(sizeof(char) * (width + 1));
+        j = 0;
+        while (j < width)
+        {
+            if ((size_t)j < ft_strlen(map[i]))
+                tmp[i][j] = map[i][j];
+            else if ((size_t)j >= ft_strlen(map[i]))
+                tmp[i][j] = '1';
+            j++;
+        }
+        tmp[i][j] = '\0';
+        i++;
+    }
+    tmp[i] = NULL;
+    return (tmp);
+}
 void	size_of_map(char **map, int *x, int *y)
 {
 	int	i;
@@ -35,7 +73,7 @@ void	size_of_map(char **map, int *x, int *y)
 			*x = j;
 		a++;
 	}
-	printf("size of map %d %d\n", *x, i);
+	// printf("size of map %d %d\n", *x, i);
 	// while (map[0][j])
 	//     j++;
 	*y = i;
@@ -50,14 +88,8 @@ int	check_wall(float x, float y, char **map)
 
 	grid_x = x / TILE_SIZE;
 	grid_y = y / TILE_SIZE;
-	height = 0;
-	width = 0;
-	while (map[height])
-		height++;
-	while (map[(int)grid_y][width])
-	{
-		width++;
-	}
+	size_of_map(map, &width, &height);
+    // fill_map(map, width, height);
 	if (grid_y >= (height) || grid_y < 0 || grid_x >= (width) || grid_x < 0)
 		return (1);
 	if (map[(int)grid_y][(int)grid_x] == '1')

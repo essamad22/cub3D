@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_color1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 00:58:22 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:33:28 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/02/29 22:44:27 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,3 @@ int	split_color(char *col, t_par *par)
 	}
 	return (0);
 }
-cd

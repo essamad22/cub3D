@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_tex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 06:13:22 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:04:44 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:00:02 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_texture(char *par)
 	if (ft_strcmp(par, ".xpm"))
 	{
 		printf("%s\n", par);
-		printf("Error\nTexture not found\n");
 		return (1);
 	}
 	return (0);

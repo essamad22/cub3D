@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 07:16:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 20:57:40 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:46:37 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_floor(t_data *img, int x, int y, int color)
 //     int dy = y2 - (par->player->posY / 8);
 //     float steps, k;
 //     float xIncrement, yIncrement, x = par->player->posX / 8,
-	y = par->player->posY / 8;
+	// y = par->player->posY / 8;
 //
 //     if (abs(dx) > abs(dy))
 //         steps = abs(dx);
@@ -95,8 +95,8 @@ void	draw_floor(t_data *img, int x, int y, int color)
 //     k = 0;
 //     while (k < steps)
 //     {
-//         // if (y <= 0 || x <= 0 || y > par->height * 16 || x > par->width
-	* 16)
+// //         // if (y <= 0 || x <= 0 || y > par->height * 16 || x > par->width
+// 	* 16)
 //         //     break ;
 //         if (par->map[(int)(y / 8)][(int)(x / 8)] == '1')
 //             break ;

@@ -6,41 +6,40 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 20:57:58 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 00:07:48 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// void	loop(t_data *img, t_par *par)
-// {
-// 	int	x;
-//     int	y;
-//     int posY;
-//     int posX;
-//
-// 	y = -1;
-//     posY = par->player->posY - 192;
-//     posX = par->player->posX - 192;
-// 	while (++y < 256)
-// 	{
-//         x = -1;
-// 		while (++x < 256)
-// 		{
-//             if ((posY + y + 128) > par->height * 64
-//                     || (posX + x + 128) > par->width * 64
-//                     || (posY + y) < 0 || (posX + x) < 0)
-//                 my_mlx_pixel_put(img, x, y, 0x000000);
-//             else if (par->map[(y + posY + 64) / 64][(x + posX + 64)
-	/ 64] == '1')
-// 				my_mlx_pixel_put(img, x, y, 0x000000);
-// 			else
-// 				my_mlx_pixel_put(img, x, y, 0xfafafa);
-// 		}
-// 	}
-//     ft_player(128, 128, img);
-// }
-//
+void	loop(t_data *img, t_par *par)
+{
+	int	x;
+    int	y;
+    int posY;
+    int posX;
+
+	y = -1;
+    posY = par->player->posY - 192;
+    posX = par->player->posX - 192;
+	while (++y < 256)
+	{
+        x = -1;
+		while (++x < 256)
+		{
+            if ((posY + y + 128) > par->height * 64
+                    || (posX + x + 128) > par->width * 64
+                    || (posY + y) < 0 || (posX + x) < 0)
+                my_mlx_pixel_put(img, x, y, 0x000000);
+            else if (par->map[(y + posY + 64) / 64][(x + posX + 64) / 64] == '1')
+				my_mlx_pixel_put(img, x, y, 0x000000);
+			else
+				my_mlx_pixel_put(img, x, y, 0xfafafa);
+		}
+	}
+    ft_player(128, 128, img);
+}
+
 int	close_win(t_par *par)
 {
 	int	i;
@@ -55,6 +54,7 @@ int	close_win(t_par *par)
 	}
 	mlx_destroy_window(par->mlx->mlx_p, par->mlx->win_p);
 	free_tex(par->tex);
+    free_map(par->map);
 	free(par);
 	exit(0);
 	return (0);
@@ -105,8 +105,12 @@ int	mlx(char **map, void *par1)
 	t_par	*par;
 
 	par = par1;
-	par->map = map;
 	size_of_map(map, &par->width, &par->height);
+    par->map = fill_map(map, par->width, par->height);
+    for (int i = 0; par->map[i]; i++)
+    {
+        printf("%s\n", par->map[i]);
+    }
 	par->mlx->mlx_p = mlx_init();
 	par->mlx->win_p = mlx_new_window(par->mlx->mlx_p, WIDTH, HEIGHT, "CUB3D");
 	par->mlx->data.img = mlx_new_image(par->mlx->mlx_p, WIDTH, HEIGHT);

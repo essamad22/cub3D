@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 16:42:06 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 23:40:09 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@
 
 
 // ---utils-func---
+char  **fill_map(char **map, int width, int height);
+void  free_map(char **map);
 void  size_of_map(char **map, int *x, int *y);
 void  loop(t_data *img, t_par *par);
 void stroke(t_data *img, t_par *par);

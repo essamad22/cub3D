@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 20:58:12 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/02/29 22:54:46 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	render(t_par *par)
 	rays = get_ray(par, FOV, (double)NUM_RAYS);
 	render_3d(par, rays, &par->mlx->data, par->player->rotAngle);
 	free(rays);
-	// loop(&par->mlx->data, par);
+	loop(&par->mlx->data, par);
 	mlx_put_image_to_window(par->mlx->mlx_p, par->mlx->win_p,
 		par->mlx->data.img, 0, 0);
 }
