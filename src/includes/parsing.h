@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 18:53:53 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:12:54 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ typedef struct s_evt
 
 typedef struct s_player
 {
-	float			posX;
-	float			posY;
-	double			dirX;
-	double			dirY;
-	float			rotAngle;
-	float			walkDir;
-	float			turnDir;
+	float			pos_x;
+	float			pos_y;
+	double			dir_x;
+	double			dir_y;
+	float			rotangle;
+	float			walkdir;
+	float			turndir;
 	float			side_walk;
 }					t_player;
 
@@ -97,10 +97,10 @@ typedef struct s_par
 	char			**splited;
 	t_player		*player;
 	int				arr[6];
-	unsigned int	color_F;
-	unsigned int	color_C;
-	int				C_CLR[3];
-	int				F_CLR[3];
+	unsigned int	col_f;
+	unsigned int	col_c;
+	int				c_clr[3];
+	int				f_clr[3];
 }					t_par;
 
 void				my_mlx_pixel_put(t_data *data, int x, int y, int color);

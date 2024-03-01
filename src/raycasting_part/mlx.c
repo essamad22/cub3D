@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 18:19:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:00:11 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	loop(t_data *img, t_par *par)
 	int	pos_x;
 
 	y = -1;
-	pos_y = par->player->posY - 192;
-	pos_x = par->player->posX - 192;
+	pos_y = par->player->pos_y - 192;
+	pos_x = par->player->pos_x - 192;
 	while (++y < 256)
 	{
 		x = -1;
@@ -63,13 +63,13 @@ int	close_win(t_par *par)
 int	key_up(int key, t_par *par)
 {
 	if (key == 1493 || key == 119 || key == ARROW_UP_L)
-		par->player->walkDir = 0;
+		par->player->walkdir = 0;
 	if (key == 1491 || key == 115 || key == ARROW_DOWN_L)
-		par->player->walkDir = 0;
+		par->player->walkdir = 0;
 	if (key == ARROW_LEFT_L)
-		par->player->turnDir = 0;
+		par->player->turndir = 0;
 	if (key == ARROW_RIGHT_L)
-		par->player->turnDir = 0;
+		par->player->turndir = 0;
 	if (key == 97 || key == 1492)
 		par->player->side_walk = 0;
 	if (key == 100 || key == 1514)
@@ -84,13 +84,13 @@ int	key_down(int key, t_par *par)
 		close_win(par);
 	}
 	if (key == ARROW_LEFT_L)
-		par->player->turnDir = -1;
+		par->player->turndir = -1;
 	if (key == ARROW_RIGHT_L)
-		par->player->turnDir = 1;
+		par->player->turndir = 1;
 	if (key == 119 || key == ARROW_UP_L || key == 1493)
-		par->player->walkDir = 1;
+		par->player->walkdir = 1;
 	if (key == 115 || key == ARROW_DOWN_L || key == 1491)
-		par->player->walkDir = -1;
+		par->player->walkdir = -1;
 	if (key == 97 || key == 1492)
 		par->player->side_walk = -1;
 	if (key == 100 || key == 1514)

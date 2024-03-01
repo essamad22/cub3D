@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:06:22 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 02:48:11 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:07:45 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_white(char **map, size_t i, size_t j)
 	if (i == 0 || (!map[i - 1] || !map[i + 1]))
 		return (1);
 	if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '
-		|| strlen(map[i - 1]) < j || strlen(map[i + 1]) < j
+		|| ft_strlen(map[i - 1]) < j || ft_strlen(map[i + 1]) < j
 		|| map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 		return (1);
 	if (map[i][j - 1] == '\0' || map[i][j + 1] == '\0' || map[i - 1][j] == '\0'

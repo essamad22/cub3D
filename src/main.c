@@ -6,11 +6,10 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:51:49 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/28 20:56:44 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:01:09 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/3d.h"
 #include "includes/cub3d.h"
 #include "includes/parsing.h"
 #include <math.h>

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 00:29:58 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 18:37:31 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:04:30 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	update_player(t_par *par)
 	int	c;
 
 	c = 0;
-	if (par->map[(int)par->player->posY / 64][(int)(par->player->posX
-		+ par->player->dirX) / 64] == '0')
+	if (par->map[(int)par->player->pos_y / 64][(int)(par->player->pos_x
+		+ par->player->dir_x) / 64] == '0')
 	{
-		par->player->posX += par->player->dirX;
+		par->player->pos_x += par->player->dir_x;
 		c = 1;
 	}
-	if (par->map[(int)(par->player->posY + par->player->dirY)
-		/ 64][(int)par->player->posX / 64] == '0')
+	if (par->map[(int)(par->player->pos_y + par->player->dir_y)
+		/ 64][(int)par->player->pos_x / 64] == '0')
 	{
-		par->player->posY += par->player->dirY;
+		par->player->pos_y += par->player->dir_y;
 		c = 1;
 	}
 	return (c);
@@ -37,25 +37,25 @@ int	update(t_par *par)
 	int	c;
 
 	c = 0;
-	if (par->player->walkDir || par->player->turnDir)
+	if (par->player->walkdir || par->player->turndir)
 	{
-		par->mov_step = par->player->walkDir * MOV_SPEED;
-		par->player->rotAngle += par->player->turnDir * ROT_SPEED;
-		par->player->dirX = cos(par->player->rotAngle) * par->mov_step;
-		par->player->dirY = sin(par->player->rotAngle) * par->mov_step;
+		par->mov_step = par->player->walkdir * MOV_SPEED;
+		par->player->rotangle += par->player->turndir * ROT_SPEED;
+		par->player->dir_x = cos(par->player->rotangle) * par->mov_step;
+		par->player->dir_y = sin(par->player->rotangle) * par->mov_step;
 		c += update_player(par);
 	}
 	if (par->player->side_walk)
 	{
-		par->mov_step = par->player->rotAngle + par->player->side_walk * (PI
+		par->mov_step = par->player->rotangle + par->player->side_walk * (PI
 				/ 2);
-		par->player->dirX = cos(par->mov_step) * MOV_SPEED;
-		par->player->dirY = sin(par->mov_step) * MOV_SPEED;
+		par->player->dir_x = cos(par->mov_step) * MOV_SPEED;
+		par->player->dir_y = sin(par->mov_step) * MOV_SPEED;
 		c += update_player(par);
 	}
-	if (par->player->turnDir || c)
+	if (par->player->turndir || c)
 	{
-		par->player->rotAngle = norm_angle(par->player->rotAngle);
+		par->player->rotangle = norm_angle(par->player->rotangle);
 		render(par);
 	}
 	return (0);

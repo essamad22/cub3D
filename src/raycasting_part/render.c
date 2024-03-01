@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 22:54:46 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:14:00 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_ray	*get_ray(t_par *par, double fov, double num_rays)
 	int		id;
 
 	rays = malloc(sizeof(t_ray) * num_rays);
-	ray_angle = par->player->rotAngle - (fov / 2);
+	ray_angle = par->player->rotangle - (fov / 2);
 	id = 0;
 	while (id < NUM_RAYS)
 	{
@@ -65,8 +65,8 @@ void	render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
 		par->mlx->wall = fill_wall(i, (HEIGHT - wall_height) / 2, wall_height,
 				par->mlx->wall);
 		draw_wall(par->mlx->wall, &par->mlx->data, rays[i], par);
-		draw_ceiling(img, i, (HEIGHT / 2) - (wall_height / 2), par->color_C);
-		draw_floor(img, i, (HEIGHT / 2) + (wall_height / 2), par->color_F);
+		draw_ceiling(img, i, (HEIGHT / 2) - (wall_height / 2), par->col_c);
+		draw_floor(img, i, (HEIGHT / 2) + (wall_height / 2), par->col_f);
 		i++;
 	}
 }
@@ -76,7 +76,7 @@ void	render(t_par *par)
 	t_ray	*rays;
 
 	rays = get_ray(par, FOV, (double)NUM_RAYS);
-	render_3d(par, rays, &par->mlx->data, par->player->rotAngle);
+	render_3d(par, rays, &par->mlx->data, par->player->rotangle);
 	free(rays);
 	loop(&par->mlx->data, par);
 	mlx_put_image_to_window(par->mlx->mlx_p, par->mlx->win_p,

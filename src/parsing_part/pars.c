@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:45:28 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 21:26:38 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:15:02 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	final_check(t_par *par)
 	if (check_color(par->color_f, par))
 		error("Error\nInvalid color", par);
 	else
-		rgb(par, &par->color_F, par->F_CLR);
+		rgb(par, &par->col_f, par->f_clr);
 	if (check_color(par->color_c, par))
 		error("Error\nInvalid color", par);
 	else
-		rgb(par, &par->color_C, par->C_CLR);
+		rgb(par, &par->col_c, par->c_clr);
 	tex_without_space(par);
 	if (find_player(par))
 		error("Error\n invalid player", par);

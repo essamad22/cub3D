@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:04:40 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 14:32:39 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:05:33 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	error(char *str, t_par *par)
 
 void	ft_init_player(t_player *player)
 {
-	player->posX = 0.0;
-	player->posY = 0.0;
-	player->dirX = 0;
-	player->dirY = 0;
-	player->rotAngle = 0;
-	player->walkDir = 0;
-	player->turnDir = 0;
+	player->pos_x = 0.0;
+	player->pos_y = 0.0;
+	player->dir_x = 0;
+	player->dir_y = 0;
+	player->rotangle = 0;
+	player->walkdir = 0;
+	player->turndir = 0;
 	player->side_walk = 0;
 }
 
