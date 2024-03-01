@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "../../lib/libft.h"
-# include "../../mlx_linux/mlx.h"
+# include <mlx.h>
 # include <math.h>
 # include <stdio.h>
 // -----------------PARSING-----------------

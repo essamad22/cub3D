@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tex.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:23:24 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/03/01 22:41:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 22:56:12 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,17 @@ void	init_tex(t_par *par)
 		par->tex[i].width = 0;
 		par->tex[i].height = 0;
 		par->tex[i].img = malloc(sizeof(t_data));
-        if (!par->tex[i].img)
-            error("Error\n", par);
+		if (!par->tex[i].img)
+			error("Error\n", par);
 		par->tex[i].img->img = mlx_xpm_file_to_image(par->mlx->mlx_p,
-				par->tex[i].path, &par->tex[i].width, &par->tex[i].height);
+				par->tex[i].path,
+				&par->tex[i].width,
+				&par->tex[i].height);
 		if (!par->tex[i].img->img)
 			error("Error\n", par);
 		par->tex[i].img->addr = mlx_get_data_addr(par->tex[i].img->img,
-				&par->tex[i].img->bpp, &par->tex[i].img->l_len,
+				&par->tex[i].img->bpp,
+				&par->tex[i].img->l_len,
 				&par->tex[i].img->endian);
 		if (!par->tex[i].img->addr)
 			error("Error\n", par);

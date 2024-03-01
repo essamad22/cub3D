@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/03/01 22:39:50 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 22:51:52 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_ray	*get_ray(t_par *par, double fov, double num_rays)
 	int		id;
 
 	rays = malloc(sizeof(t_ray) * num_rays);
-    if (!rays)
-    {
-        error("Error\n", par);
-    }
+	if (!rays)
+	{
+		error("Error\n", par);
+	}
 	ray_angle = par->player->rotangle - (fov / 2);
 	id = 0;
 	while (id < NUM_RAYS)

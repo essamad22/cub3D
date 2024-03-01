@@ -55,6 +55,7 @@ int	close_win(t_par *par)
 	mlx_destroy_window(par->mlx->mlx_p, par->mlx->win_p);
 	free_tex(par->tex);
 	free_map(par->map);
+  free(par->mlx);
 	free(par);
 	exit(0);
 	return (0);
