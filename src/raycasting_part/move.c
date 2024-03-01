@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 00:29:58 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:12:10 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:49:06 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	update_player(t_par *par)
 
 	c = 0;
 	if (par->map[(int)par->player->posY / 64][(int)(par->player->posX
-			+ par->player->dirX) / 64] == '0')
+		+ par->player->dirX) / 64] == '0')
 	{
 		par->player->posX += par->player->dirX;
 		c = 1;
@@ -47,18 +47,15 @@ int	update(t_par *par)
 	}
 	if (par->player->side_walk)
 	{
-		par->mov_step = 1 * mov_speed;
-		// par->player->rotAngle += par->player->side_walk * rot_speed;
-		par->player->dirX = cos(par->player->rotAngle + par->player->side_walk
-				* (PI / 2)) * par->mov_step;
-		par->player->dirY = sin(par->player->rotAngle + par->player->side_walk
-				* (PI / 2)) * par->mov_step;
+		par->mov_step = par->player->rotAngle + par->player->side_walk * (PI
+				/ 2);
+		par->player->dirX = cos(par->mov_step) * mov_speed;
+		par->player->dirY = sin(par->mov_step) * mov_speed;
 		c += update_player(par);
 	}
 	if (par->player->turnDir || c)
 	{
 		par->player->rotAngle = norm_angle(par->player->rotAngle);
-		// loop(par->map, par->mlx->mlx_p, par->mlx->win_p, par);
 		render(par);
 	}
 	return (0);

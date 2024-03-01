@@ -61,8 +61,6 @@ void	render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
 	while (i < NUM_RAYS)
 	{
 		wall_height = (distance_to_vp / rays[i].distance);
-		// printf("rays[0].ray = %f\n", rays[0].ray_angle);
-		// printf("angle = %f\n", angle);
 		wall_height /= cos(angle - rays[i].ray_angle);
 		par->mlx->wall = fill_wall(i, (HEIGHT - wall_height) / 2, wall_height,
 				par->mlx->wall);
@@ -72,6 +70,7 @@ void	render_3d(t_par *par, t_ray *rays, t_data *img, double angle)
 		i++;
 	}
 }
+
 void	render(t_par *par)
 {
 	t_ray	*rays;

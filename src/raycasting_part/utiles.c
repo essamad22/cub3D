@@ -12,56 +12,43 @@
 
 #include "../includes/cub3d.h"
 
-void free_map(char **map)
+char	**fill_map(char **map, int width, int height)
 {
-    int i;
+	int		i;
+	int		j;
+	char	**tmp;
 
-    i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	i = 0;
+	tmp = malloc(sizeof(char *) * (height + 1));
+	while (i < height)
+	{
+		tmp[i] = malloc(sizeof(char) * (width + 1));
+		j = 0;
+		while (j < width)
+		{
+			if ((size_t)j < ft_strlen(map[i]))
+				tmp[i][j] = map[i][j];
+			else if ((size_t)j >= ft_strlen(map[i]))
+				tmp[i][j] = '1';
+			j++;
+		}
+		tmp[i][j] = '\0';
+		i++;
+	}
+	tmp[i] = NULL;
+	return (tmp);
 }
-char  **fill_map(char **map, int width, int height)
-{
-    int i;
-    int j;
-    char **tmp;
 
-    i = 0;
-    tmp = malloc(sizeof(char *) * (height + 1));
-    while (i < height)
-    {
-        tmp[i] = malloc(sizeof(char) * (width + 1));
-        j = 0;
-        while (j < width)
-        {
-            if ((size_t)j < ft_strlen(map[i]))
-                tmp[i][j] = map[i][j];
-            else if ((size_t)j >= ft_strlen(map[i]))
-                tmp[i][j] = '1';
-            j++;
-        }
-        tmp[i][j] = '\0';
-        i++;
-    }
-    tmp[i] = NULL;
-    return (tmp);
-}
 void	size_of_map(char **map, int *x, int *y)
 {
 	int	i;
 	int	j;
 	int	a;
 
-	// check size of map for the window size
 	i = 0;
 	j = 0;
 	*x = 0;
 	a = 0;
-	// printf("size of map\n");
 	while (map[i])
 		i++;
 	while (a < i)
@@ -73,9 +60,6 @@ void	size_of_map(char **map, int *x, int *y)
 			*x = j;
 		a++;
 	}
-	// printf("size of map %d %d\n", *x, i);
-	// while (map[0][j])
-	//     j++;
 	*y = i;
 }
 
@@ -89,7 +73,6 @@ int	check_wall(float x, float y, char **map)
 	grid_x = x / TILE_SIZE;
 	grid_y = y / TILE_SIZE;
 	size_of_map(map, &width, &height);
-    // fill_map(map, width, height);
 	if (grid_y >= (height) || grid_y < 0 || grid_x >= (width) || grid_x < 0)
 		return (1);
 	if (map[(int)grid_y][(int)grid_x] == '1')
@@ -103,7 +86,7 @@ unsigned int	get_pixel(t_data *img, int x, int y, t_tex *tex)
 
 	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
 		return (0);
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
 	return (*(unsigned int *)dst);
 }
 
@@ -115,6 +98,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	{
 		return ;
 	}
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->l_len + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }

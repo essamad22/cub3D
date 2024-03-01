@@ -35,7 +35,7 @@ SRCS			=	src/main.c \
 					\
 					src/raycasting_part/mlx.c src/raycasting_part/move.c src/raycasting_part/utiles.c	\
 					src/raycasting_part/draw.c src/raycasting_part/intersection.c src/raycasting_part/render.c	\
-					src/raycasting_part/intersec_utils.c src/raycasting_part/tex.c
+					src/raycasting_part/intersec_utils.c src/raycasting_part/tex.c src/raycasting_part/free.c
 					
 OBJS			=	$(SRCS:.c=.o)
 

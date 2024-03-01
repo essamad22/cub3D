@@ -26,21 +26,6 @@ t_tex	*get_tex(char direction, t_par *par)
 	return (NULL);
 }
 
-void	free_tex(t_tex *tex)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		free(tex[i].path);
-		free(tex[i].id);
-		free(tex[i].img);
-		i++;
-	}
-	free(tex);
-}
-
 void	set_path(t_par *par)
 {
 	par->tex[0].path = par->tex_e;
@@ -52,6 +37,7 @@ void	set_path(t_par *par)
 	par->tex[3].path = par->tex_n;
 	par->tex[3].id = ft_strdup("N");
 }
+
 void	init_tex(t_par *par)
 {
 	int	i;
@@ -59,11 +45,6 @@ void	init_tex(t_par *par)
 	i = 0;
 	par->tex = malloc(sizeof(t_tex) * 4);
 	set_path(par);
-	// for (i = 0; i < 4; i++)
-	// {
-	//     printf("%s %s\n", par->tex[i].id ,par->tex[i].path);
-	// }
-	// i = 4;
 	while (i < 4)
 	{
 		par->tex[i].width = 0;
@@ -74,7 +55,7 @@ void	init_tex(t_par *par)
 		if (!par->tex[i].img->img)
 			error("Error\n", par);
 		par->tex[i].img->addr = mlx_get_data_addr(par->tex[i].img->img,
-				&par->tex[i].img->bits_per_pixel, &par->tex[i].img->line_length,
+				&par->tex[i].img->bpp, &par->tex[i].img->l_len,
 				&par->tex[i].img->endian);
 		if (!par->tex[i].img->addr)
 			error("Error\n", par);
