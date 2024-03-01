@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:04:40 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/28 20:50:06 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:32:39 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_init_player(t_player *player)
 	player->posY = 0.0;
 	player->dirX = 0;
 	player->dirY = 0;
-	player->rotAngle = M_PI / 2;
+	player->rotAngle = 0;
 	player->walkDir = 0;
 	player->turnDir = 0;
 	player->side_walk = 0;

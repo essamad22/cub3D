@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:58:25 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:08:40 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:32:27 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ void	condition(t_par *par, int *i, int *j, int *cc)
 	{
 		par->player->posX = *j * 64 + 32;
 		par->player->posY = *i * 64 + 32;
+        if (par->map[*i][*j] == 'N')
+            par->player->rotAngle = 3 * M_PI / 2;
+        else if (par->map[*i][*j] == 'S')
+            par->player->rotAngle = M_PI / 2;
+        else if (par->map[*i][*j] == 'E')
+            par->player->rotAngle = 0;
+        else if (par->map[*i][*j] == 'W')
+            par->player->rotAngle = M_PI;
 		ft_vectorize_dir(par->map[*i][*j], par->player);
 		(*cc)++;
 		par->map[*i][*j] = '0';
