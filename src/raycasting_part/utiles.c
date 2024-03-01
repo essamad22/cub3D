@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:00:48 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 21:13:16 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 22:39:27 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ char	**fill_map(char **map, int width, int height)
 
 	i = -1;
 	tmp = malloc(sizeof(char *) * (height + 1));
-    if (!tmp)
-        return (NULL);
 	while (++i < height)
 	{
 		tmp[i] = malloc(sizeof(char) * (width + 1));
-        if (!tmp[i])
-            return (NULL);
 		j = -1;
 		while (++j < width)
 		{

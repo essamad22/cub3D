@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:23:24 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/03/01 21:14:47 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 22:41:15 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,10 @@ void	init_tex(t_par *par)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	par->tex = malloc(sizeof(t_tex) * 4);
-    if (!par->tex)
-        error("Error\n", par);
 	set_path(par);
-	while (i < 4)
+	while (++i < 4)
 	{
 		par->tex[i].width = 0;
 		par->tex[i].height = 0;
@@ -63,6 +61,5 @@ void	init_tex(t_par *par)
 				&par->tex[i].img->endian);
 		if (!par->tex[i].img->addr)
 			error("Error\n", par);
-		i++;
 	}
 }

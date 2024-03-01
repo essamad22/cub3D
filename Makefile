@@ -6,7 +6,7 @@
 #    By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:48:58 by aakhtab           #+#    #+#              #
-#    Updated: 2024/03/01 16:34:23 by aakhtab          ###   ########.fr        #
+#    Updated: 2024/03/01 22:42:50 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRCS			=	src/main.c \
 					
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g
+CFLAGS			=	-Wall -Wextra -Werror -I./lib/libft -I./mlx_linux -fsanitize=address -g3
 
 NAME			=	cub3D
 
@@ -66,7 +66,7 @@ $(LIBFT)	:
 
 ##---- need to modier----------
 %.o: %.c
-	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -fsanitize=address -g3 -O3 -c $< -o $@
 ##-----------------------------
 
 header:
