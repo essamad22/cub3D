@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 18:43:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:53:53 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@
 
 typedef struct s_data
 {
-    void    *img;
-    char    *addr;
-    int     bpp;
-    int     l_len;
-    int     endian;
-}               t_data;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				l_len;
+	int				endian;
+}					t_data;
 
 typedef struct s_draw
 {
-    int x;
-    int y;
-    int wall_height;
-    int width;
-    int height;
-}               t_draw;
+	int				x;
+	int				y;
+	int				wall_height;
+	int				width;
+	int				height;
+}					t_draw;
 
 typedef struct s_mlx
 {
-    void    *mlx_p;
-    void    *win_p;
-    t_data  data;
-    t_draw  wall;
-}               t_mlx;
+	void			*mlx_p;
+	void			*win_p;
+	t_data			data;
+	t_draw			wall;
+}					t_mlx;
 
 typedef struct s_col
 {
@@ -52,39 +52,39 @@ typedef struct s_col
 
 typedef struct s_evt
 {
-    int move;
-    int rot_dir;
-}               t_evt;
+	int				move;
+	int				rot_dir;
+}					t_evt;
 
-typedef	struct	s_player
+typedef struct s_player
 {
-	float	posX;
-	float	posY;
-	double	dirX;
-	double	dirY;
-    float   rotAngle;
-    float   walkDir;
-    float   turnDir;
-    float   side_walk;
-}	t_player;
+	float			posX;
+	float			posY;
+	double			dirX;
+	double			dirY;
+	float			rotAngle;
+	float			walkDir;
+	float			turnDir;
+	float			side_walk;
+}					t_player;
 
 typedef struct s_tex
 {
-    char    *path;
-    t_data  *img;
-    int     width;
-    int     height;
-    char    *id;
-}               t_tex;
+	char			*path;
+	t_data			*img;
+	int				width;
+	int				height;
+	char			*id;
+}					t_tex;
 
 typedef struct s_par
 {
-    t_mlx           *mlx;
-    float           mov_step;
-    t_tex           *tex;
-    t_evt           *evt;
-    int             width;
-    int             height;
+	t_mlx			*mlx;
+	float			mov_step;
+	t_tex			*tex;
+	t_evt			*evt;
+	int				width;
+	int				height;
 	t_col			**col;
 	char			**map;
 	char			**file;
@@ -103,14 +103,14 @@ typedef struct s_par
 	int				F_CLR[3];
 }					t_par;
 
-void                my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int                 final_check(t_par *par);
+void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int					final_check(t_par *par);
 void				free_garbage(t_col **col);
-void				error(char *str , t_par *par);
+void				error(char *str, t_par *par);
 char				*ft_strdup_pars(char *str, t_par *par);
 void				lst_add(t_col **alst, t_col *news);
 t_col				*lst_new(void *ptr, t_col **col);
-int					open_file(char *file , t_par *par);
+int					open_file(char *file, t_par *par);
 int					count_longest_line(char **file);
 int					get_texture_1(char *line, t_par *par);
 int					get_texture_2(char *line, t_par *par);
@@ -136,30 +136,30 @@ char				**ft_split_pars(char *s, char c, t_par *par);
 int					check_color(char *par, t_par *parr);
 void				remove_newline(char *str);
 int					ft_strlen_space(char *str);
-void				rgb(t_par *par, unsigned int *color , int *clr);
+void				rgb(t_par *par, unsigned int *color, int *clr);
 // int 				ft_atoi(const char *str);
 int					is_empty(char *str);
 // int 				ft_strncmp(const char *s1, const char *s2, size_t n);
-int                 check_closed(t_par *par);
-int	                check_valid(t_par *par);
-void                ft_vectorize_ew(char dir, t_player *player);
-void                ft_vectorize_ns(char dir, t_player *player);
-void                ft_vectorize_dir(char dir, t_player *player);
-void                condition(t_par *par, int *i, int *j, int *cc);
-int                 check_white(char **map, size_t i, size_t j);
-int                 is_empty(char *map);
-void                remove_last_lines(char **map);
-void	            remove_first_lines(char **str);
-int                 check_arr(int *arr);
-int                 check_ordre(t_par *par);
-int                 loop_1(t_par *par);
-int                 get_texture_1(char *line, t_par *par);
-int                 get_texture_2(char *line, t_par *par);
-int                 get_color(char *line, t_par *par);
-int                 is_texter(char *line);
-int                 get_map(char **line, t_par *par, int *j, int i);
-int	                count_comma(char *par);
-int                 split_color(char *col, t_par *par);
-void                skip_space(char *str, int *i);
-int                 ft_strlen_space(char *str);
+int					check_closed(t_par *par);
+int					check_valid(t_par *par);
+void				ft_vectorize_ew(char dir, t_player *player);
+void				ft_vectorize_ns(char dir, t_player *player);
+void				ft_vectorize_dir(char dir, t_player *player);
+void				condition(t_par *par, int *i, int *j, int *cc);
+int					check_white(char **map, size_t i, size_t j);
+int					is_empty(char *map);
+void				remove_last_lines(char **map);
+void				remove_first_lines(char **str);
+int					check_arr(int *arr);
+int					check_ordre(t_par *par);
+int					loop_1(t_par *par);
+int					get_texture_1(char *line, t_par *par);
+int					get_texture_2(char *line, t_par *par);
+int					get_color(char *line, t_par *par);
+int					is_texter(char *line);
+int					get_map(char **line, t_par *par, int *j, int i);
+int					count_comma(char *par);
+int					split_color(char *col, t_par *par);
+void				skip_space(char *str, int *i);
+int					ft_strlen_space(char *str);
 #endif
