@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:58:25 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 19:28:04 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:31:24 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void	condition(t_par *par, int *i, int *j, int *cc)
 	{
 		par->player->pos_x = *j * 64 + 32;
 		par->player->pos_y = *i * 64 + 32;
-        if (par->map[*i][*j] == 'N')
-            par->player->rotangle = 3 * M_PI / 2;
-        else if (par->map[*i][*j] == 'S')
-            par->player->rotangle = M_PI / 2;
-        else if (par->map[*i][*j] == 'W')
-            par->player->rotangle = 0;
-        else if (par->map[*i][*j] == 'E')
-            par->player->rotangle = M_PI;
+		if (par->map[*i][*j] == 'N')
+			par->player->rotangle = 3 * M_PI / 2;
+		else if (par->map[*i][*j] == 'S')
+			par->player->rotangle = M_PI / 2;
+		else if (par->map[*i][*j] == 'W')
+			par->player->rotangle = 0;
+		else if (par->map[*i][*j] == 'E')
+			par->player->rotangle = M_PI;
 		ft_vectorize_dir(par->map[*i][*j], par->player);
 		(*cc)++;
 		par->map[*i][*j] = '0';

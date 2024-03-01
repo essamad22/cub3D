@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:20:15 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/04/28 17:56:49 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:33:14 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 
 void	_putchar(char c, int fd)
-{	
+{
 	write(fd, &c, 1);
 }
 
@@ -22,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		write (fd, "-2147483648", 11);
+		write(fd, "-2147483648", 11);
 	}
 	else if (n < 0)
 	{
