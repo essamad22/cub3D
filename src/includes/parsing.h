@@ -6,7 +6,7 @@
 /*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:30:04 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:21:32 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void                ft_vectorize_ew(char dir, t_player *player);
 void                ft_vectorize_ns(char dir, t_player *player);
 void                ft_vectorize_dir(char dir, t_player *player);
 void                condition(t_par *par, int *i, int *j, int *cc);
-int                 check_white(char **map, int i, int j);
+int                 check_white(char **map, size_t i, size_t j);
 int                 is_empty(char *map);
 void                remove_last_lines(char **map);
 void	            remove_first_lines(char **str);

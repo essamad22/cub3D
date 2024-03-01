@@ -6,7 +6,7 @@
 /*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:06:22 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:23:33 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:48:11 by afennoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ int	find_player(t_par *par)
 	return (0);
 }
 
-int	check_white(char **map, int i, int j)
+int	check_white(char **map, size_t i, size_t j)
 {
 	if (i == 0 || (!map[i - 1] || !map[i + 1]))
 		return (1);
-	if (map[i][j - 1] == ' ' || map[i][j + 1] == ' ' || map[i - 1][j] == ' '
-		|| map[i + 1][j] == ' ')
+	if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '
+		|| strlen(map[i - 1]) < j || strlen(map[i + 1]) < j
+		|| map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 		return (1);
 	if (map[i][j - 1] == '\0' || map[i][j + 1] == '\0' || map[i - 1][j] == '\0'
 		|| map[i + 1][j] == '\0')
