@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 00:29:58 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 17:49:06 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:37:31 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	update(t_par *par)
 	c = 0;
 	if (par->player->walkDir || par->player->turnDir)
 	{
-		par->mov_step = par->player->walkDir * mov_speed;
-		par->player->rotAngle += par->player->turnDir * rot_speed;
+		par->mov_step = par->player->walkDir * MOV_SPEED;
+		par->player->rotAngle += par->player->turnDir * ROT_SPEED;
 		par->player->dirX = cos(par->player->rotAngle) * par->mov_step;
 		par->player->dirY = sin(par->player->rotAngle) * par->mov_step;
 		c += update_player(par);
@@ -49,8 +49,8 @@ int	update(t_par *par)
 	{
 		par->mov_step = par->player->rotAngle + par->player->side_walk * (PI
 				/ 2);
-		par->player->dirX = cos(par->mov_step) * mov_speed;
-		par->player->dirY = sin(par->mov_step) * mov_speed;
+		par->player->dirX = cos(par->mov_step) * MOV_SPEED;
+		par->player->dirY = sin(par->mov_step) * MOV_SPEED;
 		c += update_player(par);
 	}
 	if (par->player->turnDir || c)

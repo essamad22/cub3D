@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:04 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 02:21:32 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:43:21 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@ typedef	struct	s_player
     float   walkDir;
     float   turnDir;
     float   side_walk;
-	// float	planX;
-	// float	planY;
-	// float	tmp_driX;
-	// float	tmp_driY;
 }	t_player;
 
 typedef struct s_tex
@@ -166,6 +162,4 @@ int	                count_comma(char *par);
 int                 split_color(char *col, t_par *par);
 void                skip_space(char *str, int *i);
 int                 ft_strlen_space(char *str);
-
-
 #endif

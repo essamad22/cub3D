@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:16:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 23:40:09 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:45:55 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 // -----------------PARSING-----------------
 # include "parsing.h"
-# include "3d.h"
 //------------------------------------------
 // -----LINUX-----
 # define ESC_L 65307
@@ -40,13 +39,41 @@
 # define PI 3.141593
 # define WIDTH 1200
 # define HEIGHT 920
-# define wallsatrip 1
 # define NUM_RAYS WIDTH
-// # define MINIMAP_SCALE_FACTOR 0.2
 
+# define ROT_SPEED 1.5 * (PI / 180)
+# define MOV_SPEED 2
+# define RAY_ANGLE PI / 180
 
+typedef struct s_ray_ut
+{
+	double	tan_angle;
+	double	ray_down;
+	double	ray_right;
+}			t_ray_ut;
 
-// ---utils-func---
+typedef struct s_ray
+{
+	char	id;
+	double	ray_angle;
+	int		x_hit;
+	int		y_hit;
+	float	distance;
+	char	dir;
+}			t_ray;
+
+int			mlx(char **map, void *par);
+
+void		ft_vectorize_ew(char dir, t_player *player);
+void		ft_vectorize_ns(char dir, t_player *player);
+void		ft_vectorize_dir(char dir, t_player *player);
+void		ft_rotate_player(t_par *par, int key);
+void		ft_rotate_with_dir(t_par *par, float rot_dir);
+void		move_forwad(t_par *par, t_player *player, int key);
+void		move_backward(t_par *par, t_player *player, int key);
+void		move_left(t_par *par, t_player *player, int key);
+void		move_right(t_par *par, t_player *player, int key);
+
 char  **fill_map(char **map, int width, int height);
 void  free_map(char **map);
 void  size_of_map(char **map, int *x, int *y);
