@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:23:24 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/02/29 22:52:40 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:14:47 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ void	init_tex(t_par *par)
 
 	i = 0;
 	par->tex = malloc(sizeof(t_tex) * 4);
+    if (!par->tex)
+        error("Error\n", par);
 	set_path(par);
 	while (i < 4)
 	{
 		par->tex[i].width = 0;
 		par->tex[i].height = 0;
 		par->tex[i].img = malloc(sizeof(t_data));
+        if (!par->tex[i].img)
+            error("Error\n", par);
 		par->tex[i].img->img = mlx_xpm_file_to_image(par->mlx->mlx_p,
 				par->tex[i].path, &par->tex[i].width, &par->tex[i].height);
 		if (!par->tex[i].img->img)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grabge.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:41:39 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/05 11:39:23 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:25:51 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ t_col	*lst_new(void *ptr, t_col **col)
 	if (search_for_address(col, ptr))
 		return (NULL);
 	new = malloc(sizeof(t_col));
+    if (!new)
+    {
+        return (NULL);
+    }
 	new->ptr = ptr;
 	new->next = NULL;
 	return (new);

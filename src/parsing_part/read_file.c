@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afennoun <afennoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 01:49:54 by afennoun          #+#    #+#             */
-/*   Updated: 2024/02/29 22:18:08 by afennoun         ###   ########.fr       */
+/*   Updated: 2024/03/01 21:27:11 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int	get_file_size(char *file, t_par *par)
 		line = get_next_line(fd);
 	}
 	par->map = malloc(sizeof(char *) * (size + 1));
+    if (!par->map)
+    {
+        error("Error\n", par);
+    }
 	lst_add(par->col, lst_new(par->map, par->col));
 	par->map[size] = NULL;
 	return (size);

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 03:55:32 by aakhtab           #+#    #+#             */
-/*   Updated: 2024/03/01 19:14:00 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:18:04 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_ray	*get_ray(t_par *par, double fov, double num_rays)
 	int		id;
 
 	rays = malloc(sizeof(t_ray) * num_rays);
+    if (!rays)
+        error("Error\n", par);
 	ray_angle = par->player->rotangle - (fov / 2);
 	id = 0;
 	while (id < NUM_RAYS)

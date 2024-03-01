@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:04:40 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 19:05:33 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 21:28:18 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	intialize_par(t_par *par)
 	par->color_c = NULL;
 	par->map = NULL;
 	par->mlx = malloc(sizeof(t_mlx));
+    if (!par->mlx)
+    {
+        error("Error\n", par);
+    }
 	par->mov_step = 0;
 	i = 0;
 	ft_init_player(par->player);
