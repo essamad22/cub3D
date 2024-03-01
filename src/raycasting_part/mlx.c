@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:09:51 by afennoun          #+#    #+#             */
-/*   Updated: 2024/03/01 00:07:48 by aakhtab          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:44:36 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	loop(t_data *img, t_par *par)
         x = -1;
 		while (++x < 256)
 		{
-            if ((posY + y + 128) > par->height * 64
-                    || (posX + x + 128) > par->width * 64
+            if ((posY + y + 128) >= par->height * 64
+                    || (posX + x + 128) >= par->width * 64
                     || (posY + y) < 0 || (posX + x) < 0)
                 my_mlx_pixel_put(img, x, y, 0x000000);
             else if (par->map[(y + posY + 64) / 64][(x + posX + 64) / 64] == '1')
